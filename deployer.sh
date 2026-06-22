@@ -45,9 +45,9 @@ deploy_worker() {
     echo " Your key2 is : $key2"
     echo " Your Cloudflare username is : $cfusername"
     
-    until [[ "$choice" =~ ^[yYnN]$ ]]; do
-    read -p "Continue? (y/n): " choice
-    [[ "$choice" =~ ^[nN]$ ]] && exit 1
+    until [[ "$choice1" =~ ^[yYnN]$ ]]; do
+    read -p "Continue? (y/n): " choice1
+    [[ "$choice1" =~ ^[nN]$ ]] && exit 1
     done
     # Update wrangler.toml
     sed -i "s/mine/$workername/" wrangler.toml
@@ -73,9 +73,9 @@ deploy_gas() {
     echo "Go to script.google.com, login,"
     echo "go to settings, and turn Google Script API on."
 
-    until [[ "$choice" =~ ^[yYnN]$ ]]; do
-        read -p "Continue? (y/n): " choice
-        [[ "$choice" =~ ^[nN]$ ]] && exit 1
+    until [[ "$choice2" =~ ^[yYnN]$ ]]; do
+        read -p "Continue? (y/n): " choice2
+        [[ "$choice2" =~ ^[nN]$ ]] && exit 1
     done
     # Note: Double check if this is the correct path for GAS.
     # Navigating to the Cloudflare folder for GAS deployment.
@@ -117,9 +117,9 @@ deploy_gas() {
     echo "Your EXIT_TUNNEL_URL is : $EXIT_TUNNEL_URL"
     echo "Your EXIT_RELAY_KEY is : $EXIT_RELAY_KEY"
 
-    until [[ "$choice" =~ ^[yYnN]$ ]]; do
-    read -p "Continue? (y/n): " choice
-    [[ "$choice" =~ ^[nN]$ ]] && exit 1
+    until [[ "$choice3" =~ ^[yYnN]$ ]]; do
+    read -p "Continue? (y/n): " choice3
+    [[ "$choice3" =~ ^[nN]$ ]] && exit 1
     done
     # Sanitize URL
     EXIT_RELAY_URL=$(echo "$EXIT_RELAY_URL" | xargs)
