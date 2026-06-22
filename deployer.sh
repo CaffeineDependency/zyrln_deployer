@@ -41,7 +41,14 @@ deploy_worker() {
         echo "Error: All fields are required."
         exit 1
     fi
-
+    echo " Your worker name is : $workername"
+    echo " Your key2 is : $key2"
+    echo " Your Cloudflare username is : $cfusername"
+    
+    until [[ "$choice" =~ ^[yYnN]$ ]]; do
+    read -p "Continue? (y/n): " choice
+    [[ "$choice" =~ ^[nN]$ ]] && exit 1
+    done
     # Update wrangler.toml
     sed -i "s/mine/$workername/" wrangler.toml
     awk -v key="$key2" 'NR==8 {print "[vars]"; print "ZYRLN_RELAY_KEY = \"" key "\""} 1' wrangler.toml > tmp_wrangler.toml && mv tmp_wrangler.toml wrangler.toml
@@ -66,6 +73,10 @@ deploy_gas() {
     echo "Go to script.google.com, login,"
     echo "go to settings, and turn Google Script API on."
 
+    until [[ "$choice" =~ ^[yYnN]$ ]]; do
+        read -p "Continue? (y/n): " choice
+        [[ "$choice" =~ ^[nN]$ ]] && exit 1
+    done
     # Note: Double check if this is the correct path for GAS.
     # Navigating to the Cloudflare folder for GAS deployment.
     if ! cd ~/zyrln/relay/deploy/apps-script; then
@@ -101,6 +112,15 @@ deploy_gas() {
     echo "This is the same as key2 or ZYRLN_RELAY_KEY"
     read -rp "EXIT_RELAY_KEY: " EXIT_RELAY_KEY
 
+    echo "Your AUTH_KEY is : $AUTH_KEY"
+    echo "Your EXIT_RELAY_URL is : $EXIT_RELAY_URL"
+    echo "Your EXIT_TUNNEL_URL is : $EXIT_TUNNEL_URL"
+    echo "Your EXIT_RELAY_KEY is : $EXIT_RELAY_KEY"
+
+    until [[ "$choice" =~ ^[yYnN]$ ]]; do
+    read -p "Continue? (y/n): " choice
+    [[ "$choice" =~ ^[nN]$ ]] && exit 1
+    done
     # Sanitize URL
     EXIT_RELAY_URL=$(echo "$EXIT_RELAY_URL" | xargs)
     [[ ! "$EXIT_RELAY_URL" =~ ^https?:// ]] && EXIT_RELAY_URL="https://$EXIT_RELAY_URL"
