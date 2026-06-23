@@ -23,12 +23,17 @@ deploy_worker() {
         exit 1
     fi
 
-    echo "Please click the link and login to your Cloudflare account:"
+    echo "Please login to your Cloudflare account and authorize wrangler"
+    echo " If you're not redirected, copy and paste the long URL in your browser"
+
     if ! wrangler login; then
         echo "Error: Failed to login to Cloudflare."
         exit 1
     fi
-
+    echo ""
+    echo " Before starting this process"
+    echo " make sure you visit cloudflare workers page at least once if you haven't Before on this account"
+    echo ""
     # Get user inputs
     read -p "Please choose a worker name: " workername
     echo "Please enter key2 (ZYRLN_RELAY_KEY)"
@@ -41,6 +46,8 @@ deploy_worker() {
         echo "Error: All fields are required."
         exit 1
     fi
+
+    echo ""
     echo " Your worker name is : $workername"
     echo " Your key2 is : $key2"
     echo " Your Cloudflare username is : $cfusername"
@@ -74,6 +81,8 @@ deploy_gas() {
     echo "Before starting this process:"
     echo "Go to script.google.com, login,"
     echo "go to settings, and turn Google Script API on."
+    echo "refresh the page and make sure it stays on after refreshing"
+    echo "make sure you're using a stable vpn befor continuing the deployment process"
 
     until [[ "$choice2" =~ ^[yYnN]$ ]]; do
         read -p "Continue? (y/n): " choice2
