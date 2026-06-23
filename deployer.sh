@@ -58,9 +58,11 @@ deploy_worker() {
 
     # Deploy
     echo "Deploying worker..."
-    if ! wrangler publish; then
-        echo "Error: Deployment failed."
-        exit 1
+    if ! wrangler deploy; then
+        if ! wrangler publish;then
+            echo "Couldn't deploy worker"
+            exit 1
+        fi   
     fi
 
     echo "Deployment completed successfully!"
