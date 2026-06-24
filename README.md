@@ -23,9 +23,7 @@ If you want to know exactly what this one-liner is doing to your Termux environm
  3. **Execution:** Finally, it runs the deployment script which will clone the zyrln git repository, navigate to the deploy folder,edit the wrangler.toml and worker.js files based on your input, and deploy using wrangler.
 
 ### notes
- 1. this uses wrangler v2 that seems to work better on termux than newer versions, it will give a warning
-    - Unexpected fields found in migrations field:
-  "new_sqlite_classes"
+ 1. this uses wrangler v2 that seems to work better on termux than newer versions, it will give a warning:(Unexpected fields found in migrations field: "new_sqlite_classes")
 based on experience its not important and your worker will work the same
- 2. this was originally supposed to also deploy your google apps script using clasp ,but clasp login broke at some point.i think it was because of the new nodejs security patch. i even tried using a ready made alpine proot-distro container that had an older version of nodejs, but clasp login broke after 2 runs.
+ 3. this was originally supposed to also deploy your google apps script using clasp ,but clasp login broke at some point.i think it was because of the new nodejs security patch. i even tried using a ready made alpine proot-distro container that had an older version of nodejs, but clasp login broke after 2 runs.
 if you know how to fix clasp login please contact me @CaffeineDependency on telegram.
