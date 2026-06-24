@@ -20,12 +20,12 @@ If you want to know exactly what this one-liner is doing to your Termux environm
 ### How It Works
  1. **Environment Check:** The script checks if nodejs,git and wrangler are installed and will install them if they are not
  2. **Project Cloning:** Once the environment ready, it clones the deployment repository.
- 3. **Execution:** Finally, it runs the deployment script which will clone the zyrln git repository, navigate to the deploy folder,edit the wrangler.toml and worker.js files based on your input, and deploy using wrangler. 
-**note:**
-this uses wrangler v2 that seems to work better on termux than newer versions, it will give a warning
+ 3. **Execution:** Finally, it runs the deployment script which will clone the zyrln git repository, navigate to the deploy folder,edit the wrangler.toml and worker.js files based on your input, and deploy using wrangler.
+
+### notes
+ 1. this uses wrangler v2 that seems to work better on termux than newer versions, it will give a warning
     - Unexpected fields found in migrations field:
   "new_sqlite_classes"
 based on experience its not important and your worker will work the same
-**note:**
-this was originally supposed to also deploy your google apps script using clasp ,but clasp login broke at some point.i think it was because of the new nodejs security patch. i even tried using a ready made alpine proot-distro container that had an older version of nodejs, but clasp login broke after 2 runs.
-if you know how to fix clasp login please contact me @CaffeineDependency on telegram. 
+ 2. this was originally supposed to also deploy your google apps script using clasp ,but clasp login broke at some point.i think it was because of the new nodejs security patch. i even tried using a ready made alpine proot-distro container that had an older version of nodejs, but clasp login broke after 2 runs.
+if you know how to fix clasp login please contact me @CaffeineDependency on telegram.
