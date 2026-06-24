@@ -106,7 +106,7 @@ deploy_gas() {
         echo "normal login failed ,attempting another way..."
         echo "after authorization you will be redirected to a page that wont open "
         echo "fully copy its link and paste it here"
-        if ! clasp login -no--localhost;then
+        if ! clasp login --no-localhost;then
         echo "clasp failed to login "
         exit 1
         fi
