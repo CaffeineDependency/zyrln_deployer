@@ -102,7 +102,15 @@ deploy_gas() {
     echo " Please login to your google account and authorize clasp"
     echo " If you're not redirected, copy and paste the long URL in your browser"
     echo "This might take a few seconds..."
-    clasp login || {echo "login failed ,attempting another way to log in , you will be redirected to a page that wont open , copy thet link fully and paste it ";clasp login --no-localhost;} || { echo "Error: Clasp login failed"; exit 1; }
+    if ! clasp login;then
+        echo "normal login failed ,attempting another way..."
+        echo "after authorization you will be redirected to a page that wont open "
+        echo "fully copy its link and paste it here"
+        if ! clasp login -no--localhost;then
+        echo "clasp failed to login "
+        exit 1
+        fi
+    fi
 
     # Get values from user
     echo "Enter a random password"
