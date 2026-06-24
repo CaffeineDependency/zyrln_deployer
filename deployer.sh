@@ -247,13 +247,13 @@ EOF
 show_menu() {
     echo ""
     echo "================================"
-    echo "What would you like to deploy?"
-    echo "1) Cloudflare Worker"
+    echo "What would you like to do?"
+    echo "1) Deploy Cloudflare Worker"
     #commented in hopes of clasp login being fixed
     #echo "2) Google Apps Script"
     echo "q) Quit"
     echo "r) Reset and update the zyrln git repository"
-    echo "If you're new to zyrln, deploy your Cloudflare worker first"
+    #echo "If you're new to zyrln, deploy your Cloudflare worker first"
     echo "================================"
 }
 
