@@ -11,7 +11,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/CaffeineDependency/zyrln
 
 ```
 **What to Expect:**
- * **First Run:** The script will download a required dependencies like nodejs git and wrangler
+ * **First Run:** The script will download  required dependencies like nodejs git and wrangler
  * **Future Runs:** If you run the command again later, it will skip the download and deploy much faster.
  
 
