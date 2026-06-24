@@ -40,7 +40,7 @@ deploy_worker() {
     echo "This can be anything you choose, but has to be the same in your google script."
     echo "Write it down or memorize it."
     read -p "key2: " key2
-    read -p "Please enter your Cloudflare username: " cfusername
+    read -p "Please enter your Cloudflare username(without @emailprovider.com): " cfusername
 
     if [ -z "$workername" ] || [ -z "$key2" ] || [ -z "$cfusername" ]; then
         echo "Error: All fields are required."
@@ -65,8 +65,8 @@ deploy_worker() {
 
     # Deploy
     echo "Deploying worker..."
-    if ! wrangler deploy; then
-        if ! wrangler publish;then
+    if ! wrangler publish; then
+        if ! wrangler deploy;then
             echo "Couldn't deploy worker"
             exit 1
         fi   
@@ -77,6 +77,9 @@ deploy_worker() {
 }
 
 deploy_gas() {
+    #this doesn't work because clasp login decided to brake
+    #my best guess is the latest nodejs security patch broke it 
+    #if you know how to fix the clasp login issue please contact me @CaffeineDependency on telegram
     echo " *****IMPORTANT*****"
     echo "Before starting this process:"
     echo "Go to script.google.com, login,"
@@ -246,7 +249,8 @@ show_menu() {
     echo "================================"
     echo "What would you like to deploy?"
     echo "1) Cloudflare Worker"
-    echo "2) Google Apps Script"
+    #commented in hopes of clasp login being fixed
+    #echo "2) Google Apps Script"
     echo "q) Quit"
     echo "r) Reset and update the zyrln git repository"
     echo "If you're new to zyrln, deploy your Cloudflare worker first"
@@ -271,16 +275,16 @@ main() {
                 git reset --hard HEAD
                 git clean -fd
                 ;;
-            2)
-                if deploy_gas; then
-                    echo "✓ Deployment successful!"
-                else
-                    echo "✗ Google Apps Script deployment failed"
-                fi
-                cd ~/zyrln || exit 1
-                git reset --hard HEAD
-                git clean -fd
-                ;;
+            #2)
+                #if deploy_gas; then
+                #    echo "✓ Deployment successful!"
+                #else
+                #    echo "✗ Google Apps Script deployment failed"
+                #fi
+                #cd ~/zyrln || exit 1
+                #git reset --hard HEAD
+                #git clean -fd
+                #;;
             q|Q)
                 echo "Goodbye!"
                 cd ~/zyrln || exit 1
