@@ -40,8 +40,10 @@ if ! command -v npm >/dev/null 2>&1; then
         echo "Please check your internet connection or run 'termux-change-repo' to change your Termux mirror."
         exit 1
     fi
+else
+    echo "npm is good to go , moving on"
 fi
-if !pkg upgrade -y;then
+if ! pkg upgrade -y;then
     echo "Error: pkg upgrade failed."
     echo "Please check your internet connection or run 'termux-change-repo' to change your Termux mirror."
     exit 1
