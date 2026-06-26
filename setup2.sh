@@ -126,7 +126,7 @@ gasSetup(){
     echo "the next time you run this script it will skip the download"
     echo "do you wish to continue?"
     
-    choice2 = ""
+    choice2=""
     until [[ "$choice2" =~ ^[yYnN]$ ]]; do
         read -p "Continue? (y/n): " choice2
         [[ "$choice2" =~ ^[nN]$ ]] && exit 1
