@@ -1,5 +1,5 @@
 # Zyrln Deployer
-This project provides an automated script to deploy zyrln cloudflare worker,designed with v2 pre4 in mind .
+This project provides an automated script to deploy zyrln cloudflare worker and google apps script,designed with v2 pre4 in mind .
 ##  (Quick Start)
 If you just want to get your project deployed without worrying about the technical details, follow these simple steps.
 **Requirements:**
@@ -28,7 +28,7 @@ If you want to know exactly what this one-liner is doing to your Termux environm
  3. **Execution:** Finally, it runs the deployment script which will clone the zyrln git repository, navigate to the deploy folder,edit the wrangler.toml and worker.js files based on your input, and deploy using wrangler.
 ### for google apps script 
  1.it cheks for proot-distro and an alpine container, if they do not exist it downloads proot-distro and a alpine backup that comes pre installed with glasp(this isn't a typo,read note2), it's in the releases of this repo named alpineReadyglasp.tar.xz .
- 2. the script then logs in to your proot-distro alpine container and clones this project there and runs the gasDeployer.sh script which deploys your apps script via glasp 
+ 2.the script then logs in to your proot-distro alpine container and clones this project there and runs the gasDeployer.sh script which deploys your apps script via glasp 
  
 
 ### notes
