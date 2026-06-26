@@ -49,7 +49,8 @@ workerSetup(){
     else
         echo "npm is good to go, moving on"
     fi
-    
+    echo "if prompted in the next step, please choose y"
+    sleep 4
     if ! pkg upgrade -y; then
         echo "Error: pkg upgrade failed."
         echo "Please check your internet connection or run 'termux-change-repo' to change your Termux mirror."
