@@ -2,9 +2,9 @@
 This project provides an automated script to deploy zyrln cloudflare worker and google apps script,designed with v2 pre4 in mind .
 ##  (Quick Start)
 If you just want to get your project deployed without worrying about the technical details, follow these simple steps.
-**Requirements:**
- * The **Termux** app installed (download it from F-Droid or github , not Google Play Store).
-**Installation & Deployment:**
+* **Requirements:**
+  The **Termux** app installed (download it from F-Droid or github , not Google Play Store).
+* **Installation & Deployment:**
 Open Termux, paste the following command, and hit enter:
 ```bash
 curl -fsSL -o $PREFIX/tmp/setup.sh https://raw.githubusercontent.com/CaffeineDependency/zyrln_deployer/refs/heads/main/setup2.sh && bash $PREFIX/tmp/setup.sh
