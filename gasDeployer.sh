@@ -203,6 +203,7 @@ main() {
                 cd ~/zyrln || exit 1
                 git reset --hard HEAD
                 git clean -fd
+                exit 0
                 ;;
             q|Q)
                 echo "Goodbye!"
