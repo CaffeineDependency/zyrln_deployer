@@ -49,7 +49,10 @@ workerSetup(){
     else
         echo "npm is good to go, moving on"
     fi
-    echo "if prompted in the next step, please choose y"
+    echo "upgrading Termux packages ..."
+    echo "***NOTICE***"
+    echo "if prompted during the upgrade, please choose y"
+    echo "***^^^^***"
     sleep 4
     if ! pkg upgrade -y; then
         echo "Error: pkg upgrade failed."
