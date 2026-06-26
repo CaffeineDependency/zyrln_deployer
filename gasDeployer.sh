@@ -42,9 +42,6 @@ deploy_gas() {
         exit 1
     fi
 
-    echo "Please login to your Google account and authorize glasp"
-    echo "If you're not redirected, copy and paste the long URL in your browser"
-    echo "This might take a few seconds..."
 
     rm -rf .glasp
     rm -f .clasp.json
