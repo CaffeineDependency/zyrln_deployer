@@ -205,6 +205,7 @@ show_menu() {
     echo "1) Google Apps Script"
     echo "2) Cloudflare worker"
     echo "q) quit"
+    echo "if you're new to zyrln deploy your Cloudflare worker first "
     echo "================================"
 }
 
