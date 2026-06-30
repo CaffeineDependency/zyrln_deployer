@@ -179,9 +179,9 @@ EOF
 show_menu() {
     echo ""
     echo "================================"
-    echo "What would you like to do?"
-    echo "1) Google Apps Script (using glasp)"
-    echo "q) Quit"
+    echo "do you want to go ahead and deploy your google apps script?"
+    echo "y) yes deploy Google Apps Script"
+    echo "q) go back"
     echo "r) Reset and update the zyrln git repository"
     echo "================================"
 }
@@ -194,7 +194,7 @@ main() {
         read -p "Choice: " choice
 
         case $choice in
-            1)
+            y|Y)
                 if deploy_gas; then
                     echo "✓ Deployment successful!"
                 else
