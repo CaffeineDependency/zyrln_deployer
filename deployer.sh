@@ -61,7 +61,7 @@ deploy_worker() {
     awk -v key="$key2" 'NR==8 {print "[vars]"; print "ZYRLN_RELAY_KEY = \"" key "\""} 1' wrangler.toml > tmp_wrangler.toml && mv tmp_wrangler.toml wrangler.toml
     # Update worker.js
     WORKER_HOST="$workername.$cfusername.workers.dev"
-    sed -i "s/CHANGE_ME_WORKER_HOST/$WORKER_HOST/" worker.js
+    sed -i "0,/CHANGE_ME_WORKER_HOST/s//$WORKER_HOST/" worker.js
 
     # Deploy
     echo "Deploying worker..."
@@ -77,9 +77,12 @@ deploy_worker() {
 }
 
 deploy_gas() {
+
     #this doesn't work because clasp login decided to brake
     #my best guess is the latest nodejs security patch broke it 
     #if you know how to fix the clasp login issue please contact me @CaffeineDependency on telegram
+    #i got it working with glasp (a lightweight claps alt)and a proot-distro container 
+    #leaving this in in case clasp decides to fix itself 
     echo " *****IMPORTANT*****"
     echo "Before starting this process:"
     echo "Go to script.google.com, login,"
@@ -247,11 +250,11 @@ EOF
 show_menu() {
     echo ""
     echo "================================"
-    echo "What would you like to do?"
-    echo "1) Deploy Cloudflare Worker"
+    echo "do you want to go ahead with deploying your Cloudflare worker?"
+    echo "y) Deploy Cloudflare Worker"
     #commented in hopes of clasp login being fixed
     #echo "2) Google Apps Script"
-    echo "q) Quit"
+    echo "q) go back"
     echo "r) Reset and update the zyrln git repository"
     #echo "If you're new to zyrln, deploy your Cloudflare worker first"
     echo "================================"
@@ -265,7 +268,7 @@ main() {
         read -p "Choice: " choice
 
         case $choice in
-            1)
+            y|Y)
                 if deploy_worker; then
                     echo "✓ Deployment successful!"
                 else
